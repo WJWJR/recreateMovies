@@ -2,24 +2,51 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="main.css">
     <title>TIYMDN ASSIGNMENT</title>
   </head>
 
   <body>
-    <h1>It's A Differnt World!</h1>
-    <div class="handlebars-demo"></div>
+    <!-- <h1>It's A Differnt World!</h1> -->
+    <div id="movie-handlebars-demo"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script id="github-user-template" type="text/x-handlebars-template">
-      <div class="container">
-        <h1>{{New Movies}}</h1>
-        <h2>{{In Theaters}}</h2>
-        <div class="section">
-          <h2>{{Opening This Week - {{date}}}</h2>
-          <div class="">
-            <img src="{{avatar_url}}"/>
+    <script id="movieTemplate" type="text/x-handlebars-template">
+
+      <h1>New Movies</h1>
+      <h2>In Theaters</h2>
+      <h3>Opening this week - </h3>
+
+      {{#each results}}
+      <div class="movie">
+          <div class='photo-column'>
+          <img src='https://image.tmdb.org/t/p/w500{{this.poster_path}}' />
           </div>
+          <div class='info-column'>
+            <h2>{{this.title}}</h2>
+            <p>{{this.vote_count}}</p>
+            <p>{{this.overview}}</p>
+            <button><a href="https://www.youtube.com/results?search_query=movie+trailers+2017" target="_blank">Get tickets</a></button>
+            <button><a href="http://www.fandango.com/" target="_blank">Get tickets</a></button>
+            
+          </div>
+      </div>
+      {{/each}}
+    </script>
+
+
+    <!-- <script id="github-user-template" type="text/x-handlebars-template"> {{#.}}
+      <div class="container">
+
+        <div class="section">
+          <h2 class="release-date">Opening This Week - {{date}}</h2>
+
+          <div class="">
+            <img class='pic-path'src="{{avatar_url}}"/>
+          </div>
+
           <div>
             <h3>{{title}}{{year}}</h3>
             <p>{{rating}}{{runtime}} - {{genres}}</p>
@@ -28,11 +55,14 @@
             <p>{{dirctior}}</p>
             <p>{stars}</p>
           </div>
-      
-      </div>
-    </script>
 
-  <script src="main.js"></script>
+        </div>
+
+      </div>
+    </script> -->
+
+      <script src="api_key.js"></script>
+      <script src="main.js"></script>
 
   </body>
 
